@@ -1,0 +1,142 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { CalendarDays, CheckCircle2 } from "lucide-react";
+import { ButtonLink } from "@/components/button-link";
+import { DivisionCard } from "@/components/division-card";
+import { SectionHeading } from "@/components/section-heading";
+import { divisions } from "@/lib/data";
+
+type DivisionPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export function generateStaticParams() {
+  return divisions.map((division) => ({ slug: division.slug }));
+}
+
+export async function generateMetadata({ params }: DivisionPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const division = divisions.find((item) => item.slug === slug);
+
+  if (!division) {
+    return {};
+  }
+
+  return {
+    title: division.name,
+    description: division.description,
+    openGraph: {
+      title: `${division.name} | Dikhow Group`,
+      description: division.description,
+      images: [division.image]
+    }
+  };
+}
+
+export default async function DivisionPage({ params }: DivisionPageProps) {
+  const { slug } = await params;
+  const division = divisions.find((item) => item.slug === slug);
+
+  if (!division) notFound();
+
+  const related = divisions.filter((item) => item.slug !== division.slug);
+  const Icon = division.icon;
+
+  return (
+    <main className="bg-ivory pt-20">
+      <section className="relative overflow-hidden bg-emeraldDeep py-20 text-white md:py-28">
+        <Image
+          src={division.image}
+          alt={`${division.name} imagery`}
+          fill
+          priority
+          className="object-cover opacity-40"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-emeraldDeep via-emeraldDeep/90 to-emeraldDeep/50" />
+        <div className="section-shell relative z-10 grid gap-10 lg:grid-cols-[1fr_360px] lg:items-end">
+          <div>
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-gold">
+              {division.industry}
+            </p>
+            <h1 className="font-serif text-4xl font-semibold leading-tight md:text-6xl">
+              {division.name}
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">
+              {division.longDescription}
+            </p>
+          </div>
+          <div className="glass-panel rounded-lg p-6">
+            <Icon className="mb-5 h-10 w-10 text-gold" />
+            <p className="mb-2 flex items-center gap-2 text-sm font-bold text-white/80">
+              <CalendarDays className="h-4 w-4 text-gold" />
+              Established {division.established}
+            </p>
+            <p className="text-sm leading-7 text-white/70">{division.accent}</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28">
+        <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <SectionHeading
+            eyebrow="Capabilities"
+            title={`Professional services from ${division.shortName}.`}
+            text={division.description}
+          />
+          <div className="grid gap-4 sm:grid-cols-2">
+            {division.services.map((service) => (
+              <div key={service} className="rounded-lg border border-forest/10 bg-white p-6 shadow-sm">
+                <CheckCircle2 className="mb-4 h-6 w-6 text-gold" />
+                <h2 className="font-bold text-charcoal">{service}</h2>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-20 md:py-28">
+        <div className="section-shell grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-premium">
+            <Image
+              src={division.image}
+              alt={`${division.name} visual detail`}
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+            />
+          </div>
+          <div>
+            <SectionHeading eyebrow="Strengths" title="Built for credible execution." />
+            <div className="mt-8 grid gap-3">
+              {division.highlights.map((highlight) => (
+                <div key={highlight} className="flex items-center gap-3 rounded-md bg-ivory p-4">
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-gold" />
+                  <span className="font-semibold text-charcoal/80">{highlight}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <ButtonLink href="/contact">Request Proposal</ButtonLink>
+              <ButtonLink href="/contact" variant="dark">
+                Contact Us
+              </ButtonLink>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28">
+        <div className="section-shell">
+          <SectionHeading eyebrow="Explore More" title="Other Dikhow Group divisions." />
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            {related.map((item, index) => (
+              <DivisionCard key={item.slug} division={item} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
