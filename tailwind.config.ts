@@ -17,8 +17,8 @@ const config: Config = {
         charcoal: "#171b1f"
       },
       fontFamily: {
-        sans: ["Arial", "Helvetica", "sans-serif"],
-        serif: ["Georgia", "Times New Roman", "serif"]
+        sans: ["Arial", "Nirmala UI", "Vrinda", "Helvetica", "sans-serif"],
+        serif: ["Georgia", "Nirmala UI", "Times New Roman", "serif"]
       },
       boxShadow: {
         premium: "0 24px 70px rgba(6, 37, 29, 0.16)",

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "Eri silk Assam",
     "Dikhow Construction",
     "Dikhow Agro Organic",
-    "Dikhow Eri Firm"
+    "Dikhow EriNest"
   ],
   openGraph: {
     title: "Dikhow Group",

@@ -74,6 +74,11 @@ export default async function DivisionPage({ params }: DivisionPageProps) {
               Established {division.established}
             </p>
             <p className="text-sm leading-7 text-white/70">{division.accent}</p>
+            {division.sourceNote ? (
+              <p className="mt-4 rounded-md border border-white/10 bg-white/10 px-3 py-2 text-xs font-semibold text-white/80">
+                {division.sourceNote}
+              </p>
+            ) : null}
           </div>
         </div>
       </section>
@@ -95,6 +100,78 @@ export default async function DivisionPage({ params }: DivisionPageProps) {
           </div>
         </div>
       </section>
+
+      {division.assameseAbout ? (
+        <section className="bg-ivory py-20 md:py-28" lang="as">
+          <div className="section-shell">
+            <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+              <div>
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-gold">
+                  Detailed Profile
+                </p>
+                <h2 className="font-serif text-3xl font-semibold leading-tight text-charcoal md:text-5xl">
+                  {division.assameseTitle}
+                </h2>
+                {division.assameseSubtitle ? (
+                  <p className="mt-4 text-lg font-semibold leading-8 text-forest">
+                    {division.assameseSubtitle}
+                  </p>
+                ) : null}
+              </div>
+
+              <div className="rounded-lg border border-forest/10 bg-white p-6 shadow-premium md:p-8">
+                <div className="grid gap-5 text-base leading-8 text-charcoal/75">
+                  {division.assameseAbout.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+
+                {division.assameseVision ? (
+                  <div className="mt-10 border-t border-forest/10 pt-8">
+                    <h3 className="font-serif text-2xl font-semibold text-charcoal">
+                      আমাৰ দৃষ্টিভংগী (Vision)
+                    </h3>
+                    <div className="mt-4 grid gap-4 text-base leading-8 text-charcoal/75">
+                      {division.assameseVision.map((item) => (
+                        <p key={item}>{item}</p>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+
+                {division.assameseMission ? (
+                  <div className="mt-10 border-t border-forest/10 pt-8">
+                    <h3 className="font-serif text-2xl font-semibold text-charcoal">
+                      আমাৰ লক্ষ্য (Mission)
+                    </h3>
+                    <div className="mt-5 grid gap-3">
+                      {division.assameseMission.map((item) => (
+                        <div key={item} className="flex gap-3 rounded-md bg-forest/5 p-4">
+                          <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-gold" />
+                          <p className="leading-7 text-charcoal/75">{item}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+
+                {division.assamesePromise ? (
+                  <div className="mt-10 border-t border-forest/10 pt-8">
+                    <h3 className="font-serif text-2xl font-semibold text-charcoal">
+                      আমাৰ প্ৰতিশ্ৰুতি
+                    </h3>
+                    <div className="mt-4 grid gap-4 text-base leading-8 text-charcoal/75">
+                      {division.assamesePromise.map((item) => (
+                        <p key={item}>{item}</p>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="bg-white py-20 md:py-28">
         <div className="section-shell grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
