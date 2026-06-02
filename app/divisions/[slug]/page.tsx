@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { CalendarDays, CheckCircle2 } from "lucide-react";
 import { ButtonLink } from "@/components/button-link";
+import { ConstructionBooking } from "@/components/construction-booking";
 import { DivisionCard } from "@/components/division-card";
 import { LandLeaseEnquiry } from "@/components/land-lease-enquiry";
 import { SectionHeading } from "@/components/section-heading";
@@ -182,6 +183,8 @@ export default async function DivisionPage({ params }: DivisionPageProps) {
           </div>
         </section>
       ) : null}
+
+      {division.slug === "construction" ? <ConstructionBooking /> : null}
 
       {division.slug === "agro-organic" ? <LandLeaseEnquiry /> : null}
 
