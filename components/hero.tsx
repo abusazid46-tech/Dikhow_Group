@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { ArrowDown, Building2, Leaf, Waves } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { ButtonLink } from "@/components/button-link";
 import { MotionDiv } from "@/components/motion";
+import { brand, divisions } from "@/lib/data";
 
 export function Hero() {
   return (
@@ -23,6 +24,24 @@ export function Hero() {
         animate={{ y: [0, 18, 0], opacity: [0.35, 0.6, 0.35] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       />
+
+      <MotionDiv
+        initial={{ opacity: 0, x: 32 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="glass-panel absolute right-[6%] top-32 hidden w-64 rounded-lg p-4 xl:block"
+      >
+        <div className="relative aspect-[3/2] overflow-hidden rounded-md bg-black">
+          <Image
+            src={brand.logo}
+            alt="Dikhow Group logo"
+            fill
+            className="object-contain p-3"
+            sizes="256px"
+            priority
+          />
+        </div>
+      </MotionDiv>
 
       <div className="section-shell relative z-10 grid min-h-[calc(100vh-80px)] items-center py-16">
         <div className="max-w-4xl">
@@ -53,14 +72,18 @@ export function Hero() {
 
         <div className="absolute bottom-10 left-0 right-0 hidden items-end justify-between lg:flex">
           <div className="glass-panel grid w-[520px] grid-cols-3 gap-2 rounded-lg p-3">
-            {[
-              { label: "Construction", icon: Building2 },
-              { label: "Agro Organic", icon: Leaf },
-              { label: "Eri Silk", icon: Waves }
-            ].map((item) => (
-              <div key={item.label} className="rounded-md bg-white/10 p-4">
-                <item.icon className="mb-3 h-5 w-5 text-gold" />
-                <p className="text-sm font-semibold">{item.label}</p>
+            {divisions.map((division) => (
+              <div key={division.slug} className="rounded-md bg-white/10 p-3">
+                <div className="relative mb-3 h-12 w-full overflow-hidden rounded-md bg-black/70">
+                  <Image
+                    src={division.logo}
+                    alt={`${division.name} logo`}
+                    fill
+                    className="object-contain p-1"
+                    sizes="160px"
+                  />
+                </div>
+                <p className="text-sm font-semibold">{division.shortName}</p>
               </div>
             ))}
           </div>

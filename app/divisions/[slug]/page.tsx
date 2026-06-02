@@ -68,6 +68,15 @@ export default async function DivisionPage({ params }: DivisionPageProps) {
             </p>
           </div>
           <div className="glass-panel rounded-lg p-6">
+            <div className="relative mb-5 aspect-square w-36 overflow-hidden rounded-lg border border-gold/30 bg-black shadow-glow">
+              <Image
+                src={division.logo}
+                alt={`${division.name} logo`}
+                fill
+                className="object-contain p-2"
+                sizes="144px"
+              />
+            </div>
             <Icon className="mb-5 h-10 w-10 text-gold" />
             <p className="mb-2 flex items-center gap-2 text-sm font-bold text-white/80">
               <CalendarDays className="h-4 w-4 text-gold" />

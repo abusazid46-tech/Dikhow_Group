@@ -85,8 +85,17 @@ export default function AboutPage() {
             {divisions.map((division) => (
               <div
                 key={division.slug}
-                className="grid gap-4 rounded-lg border border-forest/10 bg-white p-6 shadow-sm md:grid-cols-[220px_1fr_auto] md:items-center"
+                className="grid gap-4 rounded-lg border border-forest/10 bg-white p-6 shadow-sm md:grid-cols-[96px_220px_1fr_auto] md:items-center"
               >
+                <div className="relative h-20 w-20 overflow-hidden rounded-md border border-forest/10 bg-emeraldDeep">
+                  <Image
+                    src={division.logo}
+                    alt={`${division.name} logo`}
+                    fill
+                    className="object-contain p-1"
+                    sizes="80px"
+                  />
+                </div>
                 <p className="text-sm font-bold uppercase tracking-[0.2em] text-gold">
                   {division.established}
                 </p>

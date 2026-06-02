@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Mail } from "lucide-react";
-import { contact, divisions, navLinks } from "@/lib/data";
+import { brand, contact, divisions, navLinks } from "@/lib/data";
 
 export function Footer() {
   return (
@@ -8,8 +9,14 @@ export function Footer() {
       <div className="section-shell grid gap-10 py-14 md:grid-cols-[1.3fr_0.8fr_0.9fr_0.8fr]">
         <div>
           <div className="mb-5 flex items-center gap-3">
-            <span className="grid h-11 w-11 place-items-center rounded-md border border-gold/40 bg-gold/10 font-serif text-xl font-bold text-gold">
-              D
+            <span className="relative h-14 w-20 overflow-hidden rounded-md border border-gold/40 bg-black shadow-glow">
+              <Image
+                src={brand.logo}
+                alt="Dikhow Group logo"
+                fill
+                className="object-contain p-1"
+                sizes="80px"
+              />
             </span>
             <div>
               <p className="font-bold">Dikhow Group</p>

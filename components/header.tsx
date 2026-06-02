@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { navLinks } from "@/lib/data";
+import { brand, navLinks } from "@/lib/data";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,8 +16,15 @@ export function Header() {
         className="section-shell flex h-20 items-center justify-between"
       >
         <Link href="/" className="focus-ring flex items-center gap-3 rounded-md">
-          <span className="grid h-11 w-11 place-items-center rounded-md border border-gold/40 bg-gold/10 font-serif text-xl font-bold text-gold">
-            D
+          <span className="relative h-12 w-16 overflow-hidden rounded-md border border-gold/40 bg-black shadow-glow">
+            <Image
+              src={brand.logo}
+              alt="Dikhow Group logo"
+              fill
+              className="object-contain p-1"
+              sizes="64px"
+              priority
+            />
           </span>
           <span className="leading-tight">
             <span className="block text-base font-bold text-white">Dikhow Group</span>
