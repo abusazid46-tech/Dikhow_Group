@@ -87,10 +87,11 @@ export type Division = {
 };
 
 export const contact = {
-  phoneLabel: "+91 00000 00000",
-  phoneHref: "tel:+910000000000",
+  phoneLabel: "+91 91810 35358",
+  phoneHref: "tel:+919181035358",
+  whatsappNumber: "919181035358",
   whatsappHref:
-    "https://wa.me/910000000000?text=Hello%20Dikhow%20Group%2C%20I%20would%20like%20to%20discuss%20a%20business%20enquiry.",
+    "https://wa.me/919181035358?text=Hello%20Dikhow%20Group%2C%20I%20would%20like%20to%20discuss%20a%20business%20enquiry.",
   email: "contact@dikhowgroup.com",
   location: "Assam, India"
 };

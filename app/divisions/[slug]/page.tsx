@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { CalendarDays, CheckCircle2 } from "lucide-react";
 import { ButtonLink } from "@/components/button-link";
 import { DivisionCard } from "@/components/division-card";
+import { LandLeaseEnquiry } from "@/components/land-lease-enquiry";
 import { SectionHeading } from "@/components/section-heading";
 import { divisions } from "@/lib/data";
 
@@ -181,6 +182,8 @@ export default async function DivisionPage({ params }: DivisionPageProps) {
           </div>
         </section>
       ) : null}
+
+      {division.slug === "agro-organic" ? <LandLeaseEnquiry /> : null}
 
       <section className="bg-white py-20 md:py-28">
         <div className="section-shell grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
