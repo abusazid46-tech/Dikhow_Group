@@ -125,8 +125,8 @@ export const divisions: Division[] = [
     longDescription:
       "Dikhow Construction is the group foundation, established on 6th March 2009 to deliver dependable construction services for homes, institutions, commercial assets, and public-facing infrastructure. The division combines practical project management with quality controls and a long-term commitment to client trust.",
     services: [
-      "Residential Construction",
-      "Commercial Buildings",
+      "Real Estate",
+      "Residential and Commercial Construction",
       "Infrastructure Projects",
       "Renovation & Maintenance"
     ],
@@ -183,7 +183,7 @@ export const divisions: Division[] = [
   },
   {
     slug: "erinest",
-    name: "Dikhow EriNest",
+    name: "দিখৌ EriNest",
     shortName: "EriNest",
     established: "24th April 2026",
     industry: "Eri Silk & Traditional Textiles",
@@ -194,7 +194,7 @@ export const divisions: Division[] = [
     description:
       "A heritage-led textile division presenting Assamese Eri silk, handloom craft, and cultural richness through ethical, sustainable textile production.",
     longDescription:
-      "Dikhow EriNest brings Assamese textile heritage into a modern enterprise framework. The division preserves Eri silk culture and handloom craft while connecting traditional artistry with modern demand and market access.",
+      "দিখৌ EriNest brings Assamese textile heritage into a modern enterprise framework. The division preserves Eri silk culture and handloom craft while connecting traditional artistry with modern demand and market access.",
     services: [
       "Eri Silk Production",
       "Handcrafted Textiles",

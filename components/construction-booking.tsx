@@ -9,17 +9,25 @@ const projects = [
   {
     name: "Dikhow Complex, Kahilipara",
     image: "/images/projects/dikhow-complex-kahilipara.jpeg",
-    status: "Residential complex"
+    status: "Residential complex",
+    address: "Kahilipara, Guwahati"
   },
   {
     name: "Dikhow Complex, Lalmati",
     image: "/images/projects/dikhow-complex-lalmati.jpeg",
-    status: "Apartment project"
+    status: "Apartment project",
+    address: "Lalmati, Guwahati"
   },
   {
     name: "Dikhow Complex, Jayanagar",
     image: "/images/projects/dikhow-complex-jayanagar.jpeg",
-    status: "Premium residential project"
+    status: "Premium residential project",
+    address: "Jayanagar, Guwahati"
+  },
+  {
+    name: "Dikhow Niwas",
+    status: "Upcoming Project",
+    address: "Dikhow Niwas, Lachit Garh Path, Garchuk, Guwahati-781035"
   }
 ];
 
@@ -77,7 +85,7 @@ export function ConstructionBooking() {
               Residential Projects
             </p>
             <h2 className="font-serif text-3xl font-semibold leading-tight text-charcoal md:text-5xl">
-              Dikhow Complex locations for flat enquiries.
+              Dikhow residential projects for flat enquiries.
             </h2>
             <p className="mt-5 leading-8 text-charcoal/70">
               Explore Dikhow Construction residential projects and send a booking enquiry
@@ -98,20 +106,31 @@ export function ConstructionBooking() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {projects.map((project) => (
             <article
               key={project.name}
               className="overflow-hidden rounded-lg border border-forest/10 bg-white shadow-premium"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-emeraldDeep">
-                <Image
-                  src={project.image}
-                  alt={`${project.name} project image`}
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                />
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={`${project.name} project image`}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  />
+                ) : (
+                  <div className="absolute inset-0 grid place-items-center bg-[radial-gradient(circle_at_30%_20%,rgba(201,162,74,0.28),transparent_34%),linear-gradient(135deg,#06251d,#0f3d2e)]">
+                    <div className="text-center">
+                      <Building2 className="mx-auto mb-4 h-12 w-12 text-gold" />
+                      <p className="px-6 font-serif text-2xl font-semibold text-white">
+                        Upcoming Project
+                      </p>
+                    </div>
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-emeraldDeep/80 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <p className="inline-flex rounded-md bg-white/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-gold backdrop-blur">
@@ -122,7 +141,7 @@ export function ConstructionBooking() {
               <div className="p-5">
                 <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-forest/70">
                   <MapPin className="h-4 w-4 text-gold" />
-                  Assam
+                  {project.address}
                 </div>
                 <h3 className="font-serif text-2xl font-semibold text-charcoal">{project.name}</h3>
               </div>
